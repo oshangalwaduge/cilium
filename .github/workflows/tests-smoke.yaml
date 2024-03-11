@@ -131,7 +131,7 @@ jobs:
         run: |
           CILIUM_INSTALL_DEFAULTS="${{ steps.default_vars.outputs.cilium_install_defaults }} \
              --helm-set nodeinit.enabled=true \
-             --helm-set kubeProxyReplacement=true \
+             --helm-set-string kubeProxyReplacement=true \
              --helm-set ipam.mode=kubernetes \
              --helm-set hubble.relay.enabled=true \
              --helm-set prometheus.enabled=true \

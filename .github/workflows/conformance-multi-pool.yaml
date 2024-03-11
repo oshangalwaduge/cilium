@@ -129,7 +129,7 @@ jobs:
             --helm-set=autoDirectNodeRoutes=true \
             --helm-set=routingMode=native \
             --helm-set=endpointRoutes.enabled=true \
-            --helm-set=kubeProxyReplacement=true \
+            --helm-set-string=kubeProxyReplacement=true \
             --helm-set=bpf.masquerade=true \
             --helm-set=bpf.hostLegacyRouting=true\
             --helm-set=ipMasqAgent.enabled=true \

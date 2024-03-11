@@ -43,7 +43,7 @@ The L2 Announcements feature and all the requirements can be enabled as follows:
                --set l2announcements.enabled=true \\
                --set k8sClientRateLimit.qps={QPS} \\
                --set k8sClientRateLimit.burst={BURST} \\
-               --set kubeProxyReplacement=true \\
+               --set-string kubeProxyReplacement=true \\
                --set k8sServiceHost=${API_SERVER_IP} \\
                --set k8sServicePort=${API_SERVER_PORT}
                
@@ -303,7 +303,7 @@ There are three Helm options that can be tuned with regards to leases:
                --namespace kube-system \\
                --reuse-values \\
                --set l2announcements.enabled=true \\
-               --set kubeProxyReplacement=true \\
+               --set-string kubeProxyReplacement=true \\
                --set k8sServiceHost=${API_SERVER_IP} \\
                --set k8sServicePort=${API_SERVER_PORT} \\
                --set k8sClientRateLimit.qps={QPS} \\

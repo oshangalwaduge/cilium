@@ -102,7 +102,7 @@ Therefore, the Cilium agent needs to be made aware of this information with the 
     API_SERVER_PORT=<your_api_server_port>
     helm install cilium |CHART_RELEASE| \\
         --namespace kube-system \\
-        --set kubeProxyReplacement=true \\
+        --set-string kubeProxyReplacement=true \\
         --set k8sServiceHost=${API_SERVER_IP} \\
         --set k8sServicePort=${API_SERVER_PORT}
 
@@ -380,7 +380,7 @@ Maglev hashing for services load balancing can be enabled by setting ``loadBalan
 
     helm install cilium |CHART_RELEASE| \\
         --namespace kube-system \\
-        --set kubeProxyReplacement=true \\
+        --set-string kubeProxyReplacement=true \\
         --set loadBalancer.algorithm=maglev \\
         --set k8sServiceHost=${API_SERVER_IP} \\
         --set k8sServicePort=${API_SERVER_PORT}
@@ -444,7 +444,7 @@ given service (with the property of at most 1% difference on backend reassignmen
     SEED=$(head -c12 /dev/urandom | base64 -w0)
     helm install cilium |CHART_RELEASE| \\
         --namespace kube-system \\
-        --set kubeProxyReplacement=true \\
+        --set-string kubeProxyReplacement=true \\
         --set loadBalancer.algorithm=maglev \\
         --set maglev.tableSize=65521 \\
         --set maglev.hashSeed=$SEED \\
@@ -516,7 +516,7 @@ enabled would look as follows:
     helm install cilium |CHART_RELEASE| \\
         --namespace kube-system \\
         --set routingMode=native \\
-        --set kubeProxyReplacement=true \\
+        --set-string kubeProxyReplacement=true \\
         --set loadBalancer.mode=dsr \\
         --set loadBalancer.dsrDispatch=opt \\
         --set k8sServiceHost=${API_SERVER_IP} \\
@@ -548,7 +548,7 @@ Geneve dispatch enabled would look as follows:
         --namespace kube-system \\
         --set routingMode=native \\
         --set tunnelProtocol=geneve \\
-        --set kubeProxyReplacement=true \\
+        --set-string kubeProxyReplacement=true \\
         --set loadBalancer.mode=dsr \\
         --set loadBalancer.dsrDispatch=geneve \\
         --set k8sServiceHost=${API_SERVER_IP} \\
@@ -565,7 +565,7 @@ The example configuration in DSR with Geneve dispatch and tunneling mode is as f
         --namespace kube-system \\
         --set routingMode=tunnel \\
         --set tunnelProtocol=geneve \\
-        --set kubeProxyReplacement=true \\
+        --set-string kubeProxyReplacement=true \\
         --set loadBalancer.mode=dsr \\
         --set loadBalancer.dsrDispatch=geneve \\
         --set k8sServiceHost=${API_SERVER_IP} \\
@@ -594,7 +594,7 @@ mode would look as follows:
     helm install cilium |CHART_RELEASE| \\
         --namespace kube-system \\
         --set routingMode=native \\
-        --set kubeProxyReplacement=true \\
+        --set-string kubeProxyReplacement=true \\
         --set loadBalancer.mode=hybrid \\
         --set k8sServiceHost=${API_SERVER_IP} \\
         --set k8sServicePort=${API_SERVER_PORT}
@@ -630,7 +630,7 @@ looks as follows:
     helm install cilium |CHART_RELEASE| \\
         --namespace kube-system \\
         --set routingMode=native \\
-        --set kubeProxyReplacement=true \\
+        --set-string kubeProxyReplacement=true \\
         --set socketLB.hostNamespaceOnly=true
 
 .. _XDP acceleration:
@@ -666,7 +666,7 @@ modes and can be enabled as follows for ``loadBalancer.mode=hybrid`` in this exa
     helm install cilium |CHART_RELEASE| \\
         --namespace kube-system \\
         --set routingMode=native \\
-        --set kubeProxyReplacement=true \\
+        --set-string kubeProxyReplacement=true \\
         --set loadBalancer.acceleration=native \\
         --set loadBalancer.mode=hybrid \\
         --set k8sServiceHost=${API_SERVER_IP} \\
@@ -806,7 +806,7 @@ Finally, the deployment can be upgraded and later rolled-out with the
   helm upgrade cilium |CHART_RELEASE| \\
         --namespace kube-system \\
         --reuse-values \\
-        --set kubeProxyReplacement=true \\
+        --set-string kubeProxyReplacement=true \\
         --set loadBalancer.acceleration=native \\
         --set loadBalancer.mode=snat \\
         --set k8sServiceHost=${API_SERVER_IP} \\
@@ -869,7 +869,7 @@ will automatically configure your virtual network to route pod traffic correctly
      --set routingMode=native \\
      --set enableIPv4Masquerade=false \\
      --set devices=eth0 \\
-     --set kubeProxyReplacement=true \\
+     --set-string kubeProxyReplacement=true \\
      --set loadBalancer.acceleration=native \\
      --set loadBalancer.mode=snat \\
      --set k8sServiceHost=${API_SERVER_IP} \\
@@ -962,7 +962,7 @@ The default value of this LB map size is 65536.
 
     helm install cilium |CHART_RELEASE| \\
         --namespace kube-system \\
-        --set kubeProxyReplacement=true \\
+        --set-string kubeProxyReplacement=true \\
         --set bpf.lbMapMax=131072
 
 .. _kubeproxyfree_hostport:
@@ -996,7 +996,7 @@ as in the earlier getting started deployment:
 
     helm install cilium |CHART_RELEASE| \\
         --namespace kube-system \\
-        --set kubeProxyReplacement=true \\
+        --set-string kubeProxyReplacement=true \\
         --set k8sServiceHost=${API_SERVER_IP} \\
         --set k8sServicePort=${API_SERVER_PORT}
 
@@ -1159,7 +1159,7 @@ This section elaborates on the ``kubeProxyReplacement`` options:
 
     helm install cilium |CHART_RELEASE| \\
         --namespace kube-system \\
-        --set kubeProxyReplacement=false \\
+        --set-string kubeProxyReplacement=false \\
         --set socketLB.enabled=true \\
         --set nodePort.enabled=true \\
         --set externalIPs.enabled=true \\
@@ -1176,7 +1176,7 @@ This section elaborates on the ``kubeProxyReplacement`` options:
 
     helm install cilium |CHART_RELEASE| \\
         --namespace kube-system \\
-        --set kubeProxyReplacement=false
+        --set-string kubeProxyReplacement=false
 
   The following Helm setup below would optimize Cilium's NodePort, LoadBalancer and services
   with externalIPs handling for external traffic ingressing into the Cilium managed node in
@@ -1186,7 +1186,7 @@ This section elaborates on the ``kubeProxyReplacement`` options:
 
     helm install cilium |CHART_RELEASE| \\
         --namespace kube-system \\
-        --set kubeProxyReplacement=false \\
+        --set-string kubeProxyReplacement=false \\
         --set nodePort.enabled=true \\
         --set externalIPs.enabled=true
 

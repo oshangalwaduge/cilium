@@ -61,7 +61,7 @@ Installation
         .. parsed-literal::
 
             $ cilium install |CHART_VERSION| \
-                --set kubeProxyReplacement=true \
+                --set-string kubeProxyReplacement=true \
                 --set ingressController.enabled=true \
                 --set ingressController.loadbalancerMode=dedicated
 
@@ -75,7 +75,7 @@ Installation
         .. parsed-literal::
 
             $ cilium install |CHART_VERSION| \
-                --set kubeProxyReplacement=true \
+                --set-string kubeProxyReplacement=true \
                 --set envoyConfig.enabled=true
 
         Additionally, the proxy load-balancing feature can be configured with the ``loadBalancer.l7.backend=envoy`` flag.
@@ -83,7 +83,7 @@ Installation
         .. parsed-literal::
 
             $ cilium install |CHART_VERSION| \
-                --set kubeProxyReplacement=true \
+                --set-string kubeProxyReplacement=true \
                 --set envoyConfig.enabled=true \
                 --set loadBalancer.l7.backend=envoy
 

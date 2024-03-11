@@ -44,7 +44,7 @@ Installation
             $ helm upgrade cilium |CHART_RELEASE| \\
                 --namespace kube-system \\
                 --reuse-values \\
-                --set kubeProxyReplacement=true \\
+                --set-string kubeProxyReplacement=true \\
                 --set gatewayAPI.enabled=true
 
             $ kubectl -n kube-system rollout restart deployment/cilium-operator
@@ -64,7 +64,7 @@ Installation
         .. parsed-literal::
 
             $ cilium install |CHART_VERSION| \\
-                --set kubeProxyReplacement=true \\
+                --set-string kubeProxyReplacement=true \\
                 --set gatewayAPI.enabled=true
 
         Next you can check the status of the Cilium agent and operator:

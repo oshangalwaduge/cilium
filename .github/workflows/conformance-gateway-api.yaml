@@ -122,7 +122,7 @@ jobs:
 
           CILIUM_INSTALL_DEFAULTS="${{ steps.default_vars.outputs.cilium_install_defaults }} \
             --helm-set=debug.verbose=envoy \
-            --helm-set kubeProxyReplacement=true \
+            --helm-set-string kubeProxyReplacement=true \
             --helm-set=gatewayAPI.enabled=true \
             --helm-set=l2announcements.enabled=true \
             --helm-set=devices='{eth0}'"

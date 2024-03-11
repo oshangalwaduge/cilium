@@ -94,7 +94,7 @@ jobs:
              --wait \
              --namespace kube-system \
              --set nodeinit.enabled=true \
-             --set kubeProxyReplacement=false \
+             --set-string kubeProxyReplacement=false \
              --set socketLB.enabled=false \
              --set externalIPs.enabled=true \
              --set nodePort.enabled=true \
