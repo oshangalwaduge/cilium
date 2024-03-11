@@ -198,6 +198,10 @@ func (p *fakeProxyPolicy) GetPort() uint16 {
 	return uint16(80)
 }
 
+func (p *fakeProxyPolicy) GetProtocol() uint16 {
+	return uint16(17)
+}
+
 func (p *fakeProxyPolicy) GetListener() string {
 	return "nonexisting-listener"
 }
