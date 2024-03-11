@@ -51,8 +51,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  cilium_cli_ci_version:
   check_url: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+  cilium_cli_ci_version: d5b2ecd5d2ee75a93a1ef89e48bfb401b3962295
 
 jobs:
   commit-status-start:
@@ -167,6 +167,7 @@ jobs:
             lb-mode: 'snat'
             endpoint-routes: 'true'
             egress-gateway: 'true'
+            misc: 'encryption.wireguard.encapsulate=true'
 
           - name: '10'
             # renovate: datasource=docker depName=quay.io/lvh-images/kind
@@ -194,6 +195,7 @@ jobs:
             encryption-node: 'true'
             lb-mode: 'snat'
             egress-gateway: 'true'
+            misc: 'encryption.wireguard.encapsulate=true'
 
           - name: '12'
             # renovate: datasource=docker depName=quay.io/lvh-images/kind
