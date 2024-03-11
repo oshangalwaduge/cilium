@@ -199,6 +199,7 @@ jobs:
 
       - name: Create GKE cluster
         run: |
+          nodes=${{ matrix.config.nodes || 2 }}
           gcloud container clusters create ${{ env.clusterName }}-${{ matrix.config.index }} \
             --labels "usage=${{ github.repository_owner }}-${{ github.event.repository.name }},owner=${{ steps.vars.outputs.owner }}" \
             --zone ${{ matrix.k8s.zone }} \
@@ -208,7 +209,7 @@ jobs:
             --cluster-ipv4-cidr="/21" \
             --services-ipv4-cidr="/24" \
             --image-type COS_CONTAINERD \
-            --num-nodes 2 \
+            --num-nodes $nodes \
             --machine-type e2-custom-2-4096 \
             --disk-type pd-standard \
             --disk-size 20GB \
